@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Entry point
+ * selection_sort - Entry point
  * @array: int
  * @size: size_t
  * Return: void
