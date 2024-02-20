@@ -24,7 +24,7 @@ for (k = 0; k < size - 1; k++)
 {
 printf("%d, ", array[k]);
 }
-printf("%d\n ", array[k]);
+printf("%d\n", array[k]);
 }
 }
 }
