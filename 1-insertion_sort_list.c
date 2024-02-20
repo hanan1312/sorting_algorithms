@@ -7,7 +7,7 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-listint_t *current, *temp, *tmp;
+listint_t *current, *temp;
 
 if (list == NULL || *list == NULL || (*list)->next == NULL)
 return;
@@ -31,21 +31,7 @@ if (current->prev == NULL)
 *list = current;
 if (temp->next != NULL)
 temp->next->prev = temp;
-tmp = *list;
-while (tmp != NULL)
-{
-if (tmp->next == NULL)
-{
-printf("%d ", tmp->n);
-}
-else
-{
-printf("%d, ", tmp->n);
-
-}
-tmp = tmp->next;
-}
-printf("\n");
+print_list((const listint_t *)*list);
 
 temp = current->prev;
 }
