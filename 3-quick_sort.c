@@ -62,18 +62,18 @@ i ++;
 temp = array[i];
 array[i] = array[j];
 array[j] = temp;
-print_array(array, high);
+print_array(array, high + 1);
 } 
 
 
 }
 }
-if (array[i] >= pivot)
+if (array[i] > pivot)
 {
-temp = array[i + 1];
-array[i + 1] = array[high];
+temp = array[i];
+array[i] = array[high];
 array[high] = temp;
-print_array(array, high);
+print_array(array, high + 1);
 }
 
 return i + 1;
