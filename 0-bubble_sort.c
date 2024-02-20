@@ -20,13 +20,11 @@ if (array[j] > array[j + 1])
 temp = array[j];
 array[j] = array[j + 1];
 array[j + 1] = temp;
-
-printf("Array after swapping %d and %d: ", array[j], array[j + 1]);
-for (k = 0; k < size; k++)
+for (k = 0; k < size - 1; k++)
 {
-printf("%d ", array[k]);
+printf("%d, ", array[k]);
 }
-printf("\n");
+printf("%d\n ", array[k]);
 }
 }
 }
