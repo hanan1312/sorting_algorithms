@@ -30,4 +30,3 @@ printf("%d\n", array[k]);
 }
 }
 
-
