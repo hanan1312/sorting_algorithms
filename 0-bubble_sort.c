@@ -2,7 +2,7 @@
 
 /**
  * bubble_sort - Entry point
- * @array : input int
+ * @array: size_t
  * @size: size_t
  * Return: void
  */
