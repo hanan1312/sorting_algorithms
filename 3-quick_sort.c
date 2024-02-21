@@ -1,7 +1,8 @@
 #include "sort.h"
 
-size_t lomuto_partition(int *array, size_t low, size_t high);
-void quick_sort_recursive(int *array, size_t low, size_t high);
+int lomuto_partition(int *array, size_t size, int low, int high);
+void quick_sort_recursive(int *array, size_t size, int low, int high);
+void swap_mem(int *a, int *b);
 
 /**
  * quick_sort - Entry point
@@ -13,7 +14,7 @@ void quick_sort(int *array, size_t size)
 {
 if (size < 2)
 return;
-quick_sort_recursive(array, 0, size - 1);
+quick_sort_recursive(array,size,  0, size - 1);
 }
 
 
@@ -24,19 +25,34 @@ quick_sort_recursive(array, 0, size - 1);
  * @low: high
  * Return: void
  */
-void quick_sort_recursive(int *array, size_t low, size_t high)
+void quick_sort_recursive(int *array, size_t size, int low, int high)
 {
-size_t pivot_index;
+int pivot_index;
 
 if (low < high)
 {
-pivot_index = lomuto_partition(array, low, high);
+pivot_index = lomuto_partition(array, size, low, high);
 
-quick_sort_recursive(array, low, pivot_index - 1);
-quick_sort_recursive(array, pivot_index + 1, high);
+quick_sort_recursive(array, size, low, pivot_index - 1);
+quick_sort_recursive(array, size, pivot_index + 1, high);
 }
 }
 
+
+
+/**
+ * swap_mem - Swap two integers in an array.
+ * @a: The first integer to swap.
+ * @b: The second integer to swap.
+ */
+void swap_mem(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 /**
  * lomuto_partition - Entry point
@@ -45,35 +61,31 @@ quick_sort_recursive(array, pivot_index + 1, high);
  * @low: high
  * Return: void
  */
-size_t lomuto_partition(int *array, size_t low, size_t high)
+int lomuto_partition(int *array, size_t size, int low, int high)
 {
-int pivot, temp;
-size_t i, j;
-i = low;
+int *pivot, i, j;
 
-pivot = array[high];
-for (j = low; j < high; j++)
+pivot = array + high;
+for (j = i = low; j < high; j++)
 {
-if (array[j] <= pivot)
+if (array[j] < *pivot)
 {
-if (j <= i)
+    printf("%d, %d",j,i );
+if (j > i)
 {
-i ++;
-temp = array[i];
-array[i] = array[j];
-array[j] = temp;
-print_array(array, high + 1);
+
+swap_mem(array + j, array + i);
+print_array(array, size);
+
 } 
-
+i ++;
 
 }
 }
-if (array[i] > pivot)
+if (array[i] > *pivot)
 {
-temp = array[i];
-array[i] = array[high];
-array[high] = temp;
-print_array(array, high + 1);
+swap_mem(array + i, pivot);
+print_array(array, size);
 }
 
 return i + 1;
